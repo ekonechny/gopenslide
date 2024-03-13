@@ -83,21 +83,3 @@ func main() {
 }
 
 ```
-
-## Other
-
-### Check leaks
-
-```shell
-valgrind --leak-check=full --show-leak-kinds=all ./mem_bench
-
-LD_PRELOAD=/lib/x86_64-linux-gnu/libtcmalloc_debug.so.4 valgrind --leak-check=full --show-leak-kinds=all ./mem_bench
-LD_PRELOAD=/lib/x86_64-linux-gnu/libtcmalloc.so.4 ./mem_bench
-
-go test -bench=. -v -tags="jemalloc leak" -benchmem -timeout 30m -test.bench BenchmarkImagesFormats
-```
-
-### Run with tcmalloc
-```shell
-LD_PRELOAD=/lib/x86_64-linux-gnu/libtcmalloc.so.4 go test -bench=. -benchmem -timeout 30m -test.bench BenchmarkTileGenerators
-```
